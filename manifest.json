@@ -9,8 +9,23 @@
         "storage"
     ],
 
+    "host_permissions": [
+        "*://*.geoguessr.com/*"
+    ],
+
     "browser_action": {
-        "default_icon": "resources/globe2.png",
-        "default_popup": "content/homepage.html"
-    }
+        "default_icon": "globe.png",
+        "default_popup": "homepage.html"
+    },
+
+    "background": {
+        "scripts": ["background_script.js"]
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["*://*.geoguessr.com/*"],
+            "js": ["content_script.js"]
+        }
+    ]
 }

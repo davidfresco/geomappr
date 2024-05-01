@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+<head>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="btn btn-primary main-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Save Location
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="mapFileSelect">Select Map</label>
+                            <select class="form-control" id="mapFileSelect">
+                                <option selected default>Select map</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button id="saveToMapButton" type="button" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="btn btn-primary main-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Manage Maps
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <form>
+                                <div class="form-group">
+                                    <label for="createMapField" class="form-label">Create New Map</label>
+                                    <div class="input-group mb-3">
+                                        <input class="form-control" id="createMapField">
+                                        <button id="createMapButton" type="button" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="list-group-item">
+                            <form>
+                                <div class="form-group">
+                                    <label for="manageMapSelect" class="form-label">Manage Existing Map</label>
+                                    <select class="form-control" id="manageMapSelect">
+                                        <option selected default>Select map</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div style="margin-right: 5px;">
+                                            <button id="downloadMapButton" type="button"
+                                                class="btn btn-primary">Download</button>
+                                        </div>
+                                        <button id="deleteMapButton" type="button"
+                                            class="btn btn-primary">Delete</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
