@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Geomappr",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Saves your current geoguessr location to a map file",
 
     "permissions": [
@@ -9,17 +9,9 @@
         "storage"
     ],
 
-    "host_permissions": [
-        "*://*.geoguessr.com/*"
-    ],
-
     "browser_action": {
         "default_icon": "globe.png",
         "default_popup": "homepage.html"
-    },
-
-    "background": {
-        "scripts": ["background_script.js"]
     },
 
     "content_scripts": [

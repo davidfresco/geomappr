@@ -2,82 +2,83 @@
 <html>
 
 <head>
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <!--script type="text/javascript" src="js/jquery.js"></script-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-    <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-                <button class="btn btn-primary main-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Save Location
-                </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="mapFileSelect">Select Map</label>
-                            <select class="form-control" id="mapFileSelect">
-                                <option selected default>Select map</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <button id="saveToMapButton" type="button" class="btn btn-primary">Save</button>
-                        </div>
-                    </form>
+    <div class="menu-section">
+        <button class="btn btn-primary main-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#saveLocationMenu" aria-expanded="true" aria-controls="saveLocationMenu">
+            Save Current Location
+        </button>
+        <div id="saveLocationMenu" class="collapse show">
+            <form>
+                <span id="errorMessageBox" class="error-box" hidden>error</span>
+                <div class="form-group">
+                    <label for="mapFileSelect">Select Map</label>
+                    <select class="form-control" id="mapFileSelect">
+                        <option value="" selected default>Select map</option>
+                    </select>
                 </div>
+                <div class="form-group">
+                    <span id="saveToMapButton" type="button" class="btn btn-primary">Save</span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="menu-section">
+        <button class="btn btn-primary main-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#savedMapsMenu" aria-expanded="false" aria-controls="savedMapsMenu">
+            Manage Saved Maps
+        </button>
+        <div id="savedMapsMenu" class="collapse">
+            <form>
+                <div class="form-group">
+                    <label for="createMapField" class="form-label">Create New Map</label>
+                    <div class="input-group mb-3">
+                        <input class="form-control" id="createMapField">
+                        <button id="createMapButton" type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="manageMapSelect" class="form-label">Manage Existing Map</label>
+                    <select class="form-control" id="manageMapSelect">
+                        <option value="" selected default>Select map</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div style="margin-right: 5px;">
+                            <button id="downloadMapButton" type="button" class="btn btn-primary">Download</button>
+                        </div>
+                        <button id="deleteMapButton" type="button" class="btn btn-primary">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="goodToast" class="toast text-white bg-success" role="alert" aria-live="assertive" aria-atomic="true"
+            hidden>
+            <div class=" toast-header">
+                <strong class="me-auto">Success</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div id="goodToastBody" class="toast-body">
+                success contents
             </div>
         </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-                <button class="btn btn-primary main-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Manage Maps
-                </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <form>
-                                <div class="form-group">
-                                    <label for="createMapField" class="form-label">Create New Map</label>
-                                    <div class="input-group mb-3">
-                                        <input class="form-control" id="createMapField">
-                                        <button id="createMapButton" type="button" class="btn btn-primary">Save</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </li>
-                        <li class="list-group-item">
-                            <form>
-                                <div class="form-group">
-                                    <label for="manageMapSelect" class="form-label">Manage Existing Map</label>
-                                    <select class="form-control" id="manageMapSelect">
-                                        <option selected default>Select map</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                        <div style="margin-right: 5px;">
-                                            <button id="downloadMapButton" type="button"
-                                                class="btn btn-primary">Download</button>
-                                        </div>
-                                        <button id="deleteMapButton" type="button"
-                                            class="btn btn-primary">Delete</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+        <div id="badToast" class="toast text-white bg-danger" role="alert" aria-live="assertive" aria-atomic="true"
+            hidden>
+            <div class="toast-header">
+                <strong class="me-auto">Error</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div id="badToastBody" class="toast-body">
+                failure contents
             </div>
         </div>
     </div>

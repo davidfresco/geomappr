@@ -1,17 +1,12 @@
 body {
-    width: 300px;
-    height: 400px;
     background-color: gray;
+    min-width: 300px;
 }
-
-.accordion-item {
-    background-color: gray;
-    padding: 10px;
-}
-.accordion-body {
+.menu-section {
     background-color: silver;
+    margin: 5px;
+    padding: 5px;
     border-radius: 5px;
-    padding: 10px;
 }
 .main-button {
     width: 100%;
@@ -19,7 +14,9 @@ body {
 .form-group {
     margin: 5px;
 }
-.list-group-item {
-    background-color: silver;
+.toast-header {
+    padding: 5px;
+}
+.toast-body {
     padding: 5px;
 }
