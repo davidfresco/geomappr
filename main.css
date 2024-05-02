@@ -17,6 +17,13 @@ body {
 .toast-header {
     padding: 5px;
 }
+.toast {
+    border-radius: 10px;
+}
+.toast-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 .toast-body {
     padding: 5px;
 }

@@ -67,7 +67,10 @@ async function delMap(name) {
 
 document.getElementById('createMapButton').addEventListener("click", event => {
     var mapName = document.getElementById('createMapField').value;
-    if (!mapName) return;
+    if (!mapName) {
+        showToast(badToast, 'Enter a map name');
+        return;
+    }
     addMap(mapName).then(() => {
         populateDropdowns();
     });
@@ -75,6 +78,10 @@ document.getElementById('createMapButton').addEventListener("click", event => {
 
 document.getElementById('deleteMapButton').addEventListener("click", event => {
     var mapName = document.getElementById('manageMapSelect').value;
+    if (!mapName) {
+        showToast(badToast, 'Select a map to delete');
+        return;
+    }
     delMap(mapName).then(() => {
         populateDropdowns();
     });
@@ -88,7 +95,10 @@ function showToast(toastElem, msg) {
 
 document.getElementById('saveToMapButton').addEventListener("click", event => {
     var mapName = document.getElementById('mapFileSelect').value;
-    if (!mapName) return;
+    if (!mapName) {
+        showToast(badToast, 'No map is selected to save to');
+        return;
+    }
 
     browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
         var tabID = tabs[0].id;
@@ -100,10 +110,7 @@ document.getElementById('saveToMapButton').addEventListener("click", event => {
             }
         }
         browser.tabs.sendMessage(tabID, payload).catch(error => {
-            var toastElem = document.getElementById('badToast');
-            toastElem.querySelector('.toast-body').innerHTML = 'Could not find Geoguessr game in the current tab';
-            toastElem.removeAttribute('hidden');
-            bootstrap.Toast.getOrCreateInstance(toastElem).show();
+            showToast(badToast, 'Could not find Geoguessr game in the current tab');
         });
     }).then(() => {
         var lastMapData = {}
@@ -115,6 +122,10 @@ document.getElementById('saveToMapButton').addEventListener("click", event => {
 
 document.getElementById('downloadMapButton').addEventListener("click", event => {
     var mapName = document.getElementById('manageMapSelect').value;
+    if (!mapName) {
+        showToast(badToast, 'Select a map to download');
+        return;
+    }
     getMapList().then((maps) => {
         if (!maps.includes(name)) {
         }
@@ -133,6 +144,8 @@ document.getElementById('downloadMapButton').addEventListener("click", event => 
 });
 
 populateDropdowns();
+const goodToast = document.getElementById('goodToast');
+const badToast = document.getElementById('badToast');
 
 function loadContentScript() {
   browser.tabs.executeScript({
@@ -141,23 +154,15 @@ function loadContentScript() {
 }
 
 browser.runtime.onMessage.addListener((payload) => {
-    console.log("got response:");
-    console.log(payload);
     var mapName = payload.meta.mapID;
     if (payload.cmd === 'getPosition' && payload.response) {
         browser.storage.local.get(mapName).then((value) => {
-            console.log(value);
             var map = value[mapName];
-            console.log(map);
             map.push(payload.response);
-            console.log(map);
             var mapData = {};
             mapData[mapName] = map;
             browser.storage.local.set(mapData).then(() => {
-                var toastElem = document.getElementById('goodToast')
-                toastElem.querySelector('.toast-body').innerHTML = `Saved current location to ${mapName}`;
-                toastElem.removeAttribute('hidden');
-                bootstrap.Toast.getOrCreateInstance(toastElem).show();
+                showToast(goodToast, `Saved current location to ${mapName}`);
             });
         });
     }
