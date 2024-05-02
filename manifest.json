@@ -1,8 +1,14 @@
 {
     "manifest_version": 2,
-    "name": "Geomappr",
+    "name": "GeoMappr",
     "version": "1.1",
     "description": "Saves your current geoguessr location to a map file",
+
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "geomappr@dfresco.net"
+        }
+    },
 
     "permissions": [
         "activeTab",
