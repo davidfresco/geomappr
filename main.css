@@ -27,3 +27,28 @@ body {
 .toast-body {
     padding: 5px;
 }
+#saveLocationList {
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.list-group {
+    border-radius: 15px;
+}
+.location-list-action {
+    color: gray;
+    font-size: 20px;
+    float: right;
+    /* margin: 2px; */
+}
+.list-group-item {
+    padding: 0.5rem;
+}
+li.selected {
+    background: lightskyblue;
+}
+.clickable-span {
+    cursor: pointer;
+}

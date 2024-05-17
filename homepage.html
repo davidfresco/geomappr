@@ -2,12 +2,46 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"></link>
+    <link rel="stylesheet" href="bootstrap.min.css"></link>
     <script type="text/javascript" src="bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css"></link>
+
 </head>
 
 <body>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div class="menu-section">
+        <!-- button class="btn btn-primary main-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#saveLocationList" aria-expanded="true" aria-controls="saveLocationMenu">
+            Save Current Location
+        </button -->
+        <div id="saveLocationList" class="text-primary bg-primary collapse show">
+            <ul id="pinnedMapList" class="list-group">
+                <li class="list-group-item">
+                    <span> a item</span>
+                    <span class="material-icons-outlined location-list-action">push_pin</span>
+                    <span class="material-icons-outlined location-list-action">undo</span>
+                </li>
+                <li class="list-group-item selected">
+                    <span> a item</span>
+                    <span class="material-icons-outlined location-list-action">push_pin</span>
+                    <span class="material-icons-outlined location-list-action">undo</span>
+                </li>
+                <li class="list-group-item selected">
+                    <span> a item</span>
+                    <span class="material-icons-outlined location-list-action">push_pin</span>
+                    <span class="material-icons-outlined location-list-action">undo</span>
+                </li>
+                <li class="list-group-item">
+                    <span> a item</span>
+                    <span class="material-icons-outlined location-list-action">push_pin</span>
+                    <span class="material-icons-outlined location-list-action">undo</span>
+                </li>
+            </ul>
+        </div>
+        <button class="btn btn-primary main-button" type="button">Save To Selected</button>
+    </div>
     <div class="menu-section">
         <button class="btn btn-primary main-button" type="button" data-bs-toggle="collapse"
             data-bs-target="#saveLocationMenu" aria-expanded="true" aria-controls="saveLocationMenu">
@@ -27,7 +61,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div>-
     <div class="menu-section">
         <button class="btn btn-primary main-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#savedMapsMenu" aria-expanded="false" aria-controls="savedMapsMenu">
@@ -77,7 +111,7 @@
             </div>
         </div>
     </div>
-    <script src="main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>
