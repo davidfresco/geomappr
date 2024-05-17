@@ -12,13 +12,29 @@
 
     "permissions": [
         "activeTab",
-        "storage"
+        "storage",
+        "identity"
     ],
 
     "browser_action": {
         "default_icon": "globe.png",
         "default_popup": "homepage.html"
     },
+
+    "background": {
+        "scripts": [
+            "js/listeners.js",
+            "js/storage.js",
+            "js/components/toasts.js",
+            "js/components/dropdowns.js",
+            "js/components/list-item.js",
+            "js/google/authorize.js"
+        ],
+        "persistent": false,
+        "type": "module"
+    },
+
+    "content_security_policy": "default-src 'self' 'wasm-unsafe-eval'; script-src 'self' https://apis.google.com/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/; font-src 'self' https://fonts.gstatic.com/; connect-src * https://www.googleapis.com/oauth2/v3/tokeninfo/*;",
 
     "content_scripts": [
         {
