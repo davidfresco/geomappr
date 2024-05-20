@@ -10,12 +10,16 @@
 </head>
 
 <body>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <div class="menu-section">
-        <!-- button class="btn btn-primary main-button" type="button" data-bs-toggle="collapse"
-            data-bs-target="#saveLocationList" aria-expanded="true" aria-controls="saveLocationMenu">
-            Save Current Location
-        </button -->
+        <h1 class="section-header bg-primary">
+            Save Location
+            <button id="googleSignInButton" class="btn btn-primary main-button google-account-button" type="button">
+                Sign In
+                <span class="google-account-icon">
+                    <img id="googleProfilePic" src="google_logo_icon.png">
+                </span>
+            </button>
+        </h1>
         <div id="saveLocationList" class="text-primary bg-primary collapse show">
             <ul id="pinnedMapList" class="list-group">
                 <li class="list-group-item">

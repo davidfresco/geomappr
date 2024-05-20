@@ -57,7 +57,18 @@ async function setMapData(mapName, newLocation) {
     mapData.push(newLocation);
     var newMapData = {};
     newMapData[mapName] = mapData;
-    await local.set(newMapData);
+    return await local.set(newMapData);
 }
 
-export { getMapList, getLastMap, setLastMap, addMap, delMap, getMapData, setMapData };
+async function getGoogleToken() {
+    const token = await local.get('__OAUTH2_TOKEN__');
+    return token['__OAUTH2_TOKEN__'];
+}
+
+async function setGoogleToken(token) {
+    const tokenData = {};
+    tokenData['__OAUTH2_TOKEN__'] = token;
+    return await local.set(tokenData);
+}
+
+export { getMapList, getLastMap, setLastMap, addMap, delMap, getMapData, setMapData, getGoogleToken, setGoogleToken };

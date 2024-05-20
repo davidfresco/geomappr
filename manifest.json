@@ -28,13 +28,14 @@
             "js/components/toasts.js",
             "js/components/dropdowns.js",
             "js/components/list-item.js",
+            "js/components/google-login.js",
             "js/google/authorize.js"
         ],
         "persistent": false,
         "type": "module"
     },
 
-    "content_security_policy": "default-src 'self' 'wasm-unsafe-eval'; script-src 'self' https://apis.google.com/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/; font-src 'self' https://fonts.gstatic.com/; connect-src * https://www.googleapis.com/oauth2/v3/tokeninfo/*;",
+    "content_security_policy": "default-src 'self' 'wasm-unsafe-eval'; script-src 'self' https://apis.google.com/ https://accounts.google.com/gsi/client; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://accounts.google.com/gsi/style; font-src 'self' https://fonts.gstatic.com/; connect-src * https://www.googleapis.com/oauth2/v3/tokeninfo/*; frame-src * https://accounts.google.com/gsi/*; img-src * https://lh3.googleusercontent.com/*;",
 
     "content_scripts": [
         {

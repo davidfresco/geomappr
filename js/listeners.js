@@ -1,6 +1,8 @@
 import { showToast } from './components/toasts.js';
 import { populateDropdowns } from './components/dropdowns.js';
-import { getMapList, getLastMap, setLastMap, addMap, delMap, getMapData, setMapData } from './storage.js';
+import { getMapList, getLastMap, setLastMap, addMap, delMap, getMapData, setMapData, getGoogleToken, setGoogleToken } from './storage.js';
+import { getAccessToken } from './google/authorize.js';
+import { populateLoginInfo } from './components/google-login.js';
 
 function registerEventListeners() {
     document.getElementById('createMapButton').addEventListener("click", event => {
@@ -70,6 +72,25 @@ function registerEventListeners() {
             document.body.appendChild(element);
             element.click();
             document.body.removeChild(element);
+        });
+    });
+
+    document.getElementById('googleSignInButton').addEventListener("click", event => {
+        console.log('google time!');
+        const tokenPromise = getGoogleToken().then(cachedToken => {
+            if(!cachedToken) {
+                return getAccessToken()
+            } else {
+                return null;
+            }
+        });
+        if (!tokenPromise) {
+            return;
+        }
+        tokenPromise.then(token => {
+            return setGoogleToken(token);
+        }).then(() => {
+            populateLoginInfo();
         });
     });
 
